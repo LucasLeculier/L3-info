@@ -62,9 +62,10 @@ def  sommeL_while(L : list)->float:
 
     """
     somme = 0
-    occurence = 0
-    while occurence < len(L) :
-        somme += L[occurence]
+    element = 0
+    while element < len(L) :
+        somme += L[element]
+        element +=1
     return somme
 
 
@@ -80,7 +81,9 @@ def test_exercice1():
     print("Test liste vide : ", sommeL_for_e_in([]))
     #Test liste 1111
     S=[1,10,100,1000,10000]
-    return("Test liste 11111 :",sommeL_for_e_in(S))
+    print("Test liste 11111 :",sommeL_for_e_in(S))
+    return("teste liste while :",sommeL_while(S))
+
 print(test_exercice1())
 
 def moyenne(L : list)-> float:
@@ -220,7 +223,11 @@ def val_max(L: list)-> float:
     """
     if len(L)==0:
         return 0
-    return max(L)
+    maximum = L[0]
+    for e in L :
+        if e > maximum:
+            maximum = e
+    return maximum
 
 def test_val_max():
     """
@@ -249,7 +256,13 @@ def ind_max(L:list)->int:
     """
     if len(L)==0:
         return 0
-    return L.index(max(L))
+    index = 0
+    maximum = L[0] 
+    for i in range(1,len(L)):
+        if L[i] > maximum :
+            maximum = L[i]
+            index = i
+    return index
 
 
 def test_ind_max():
