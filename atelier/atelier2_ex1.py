@@ -82,9 +82,9 @@ def test_exercice1():
     #Test liste 1111
     S=[1,10,100,1000,10000]
     print("Test liste 11111 :",sommeL_for_e_in(S))
-    return("teste liste while :",sommeL_while(S))
+    print("teste liste while :",sommeL_while(S))
 
-print(test_exercice1())
+(test_exercice1())
 
 def moyenne(L : list)-> float:
     """
@@ -113,8 +113,9 @@ def test_moyenne():
 
     """
     print("test moyenne quelconque :",moyenne(L))
-    return("test moyenne liste vide :",moyenne([]))
-print(test_moyenne())
+    print("test moyenne liste vide :",moyenne([]))
+    
+(test_moyenne())
 
 def nb_sup_for_i(L : list,e : int)-> int:
     """
@@ -169,9 +170,9 @@ def test_nb_sup():
     """
     print("test fonction nb_sup :", nb_sup_for_i(L, 5) )
     
-    return("test fonction nb_sup avec liste vide:",nb_sup_for_e_in([], 5))
+    print("test fonction nb_sup avec liste vide:",nb_sup_for_e_in([], 5))
 
-print(test_nb_sup())
+(test_nb_sup())
 
 def moyenne_sup(L:list,e:int)-> float:
     """
@@ -203,8 +204,9 @@ def test_moyenne_sup():
 
     """
     print("test moyenne_sup liste L :",moyenne_sup(L,5))
-    return("test moyenne_sup liste vide",moyenne_sup([],5))
-print(test_moyenne_sup())
+    print("test moyenne_sup liste vide",moyenne_sup([],5))
+    
+(test_moyenne_sup())
 
 def val_max(L: list)-> float:
     """
@@ -235,9 +237,9 @@ def test_val_max():
 
     """
     print("test val_max liste L :", val_max(L))
-    return ("test val_max liste vide :", val_max([]))
+    print ("test val_max liste vide :", val_max([]))
 
-print(test_val_max())
+(test_val_max())
 
 def ind_max(L:list)->int:
     """
@@ -271,5 +273,5 @@ def test_ind_max():
     
     """
     print("test ind_max liste L :",ind_max(L))
-    return("test ind_max liste vide :",ind_max([]))
-print(test_ind_max())
+    print("test ind_max liste vide :",ind_max([]))
+(test_ind_max())
