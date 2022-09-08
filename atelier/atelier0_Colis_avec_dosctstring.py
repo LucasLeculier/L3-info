@@ -137,8 +137,8 @@ def Calcul_prix_sans_complement(type_lettre : str, poid : int)-> float:
        if poid >= 0 and POID_MAX[type_lettre] >= poid :
             break
     if poid == 0 and (type_lettre == 'ecopli' or type_lettre == 'verte' or type_lettre == 'prioritaire'):
-        print("les envoies par sticker sont au prix de 0,50€")
-        exit()   
+        prix = 0.50 #Car le choix poid = 0 correspond au sticker suivis ( énoncé dans le input du poid ), le prix du sticker est tjrs de 0.5€
+         return prix
     #Récuperation du poid correspondant
     if type_lettre == 'ecopli':
         for i in ECOPLI.keys():
