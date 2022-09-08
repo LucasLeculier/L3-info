@@ -140,30 +140,11 @@ def Calcul_prix_sans_complement(type_lettre : str, poid : int)-> float:
         prix = 0.50 #Car le choix poid = 0 correspond au sticker suivis ( énoncé dans le input du poid ), le prix du sticker est tjrs de 0.5€
          return prix
     #Récuperation du poid correspondant
-    if type_lettre == 'ecopli':
-        for i in ECOPLI.keys():
-            resultat = i
-            if poid<i : 
-                prix = ECOPLI[resultat]
-                break
-    elif type_lettre == 'verte':
-        for i in VERTE.keys():
-            resultat = i
-            if poid<i :
-                prix = VERTE[resultat]
-                break
-    elif type_lettre == 'prioritaire':
-        for i in PRIORITAIRE.keys():
-            resultat = i
-            if poid<i : 
-                prix = PRIORITAIRE[resultat]
-                break
-    else:
-        for i in OUTRE_MER.keys():
-            resultat = i
-            if poid<i : 
-                prix = OUTRE_MER[resultat]
-                break
+    for i in DICT_TYPES[type_lettre].keys():
+        resultat = i
+        if poid< i:
+            prix =  DICT_TYPES[type_lettre][resultat]
+            break
     return prix
 
 
