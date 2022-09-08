@@ -236,3 +236,4 @@ def test_a_rep():
     print("test a_rep si pas de répétitions :", a_repetition(L))
 
 test_a_rep()
+
