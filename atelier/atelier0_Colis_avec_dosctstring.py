@@ -1,33 +1,42 @@
 # -*- coding: utf-8 -*-
 
 #Liste des possibilités en fonction du type de lettre
-VERTE = {20 : 1.16,
-         100 : 2.32,
-         250 : 4,
-         500 : 6,
-         1000 : 7.5,
-         3000 : 10.5,
-         0 : 0.5}
 
-PRIORITAIRE = {20 : 1.43,
-               100 : 2.86,
-               250 : 5.26,
-               500 : 7.89,
-               3000 : 11.44,
-               0 : 0.5}
-
-ECOPLI = {20 : 1.14,
-          100 : 2.28,
-          250 : 3.92,
-          0 : 0.5}
-
-OUTRE_MER = {500 : 8.35,
-             1000 : 11.2,
-             2000 : 14.1,
-             5000 : 23.65,
-             10000 : 37.5,
-             15000 : 75.85,
-             30000 : 87.4}
+DICT_TYPES = {
+    'verte' : {
+                20 : 1.16,
+                100 : 2.32,
+                250 : 4,
+                500 : 6,
+                1000 : 7.5,
+                3000 : 10.5,
+                0 : 0.5
+        },
+    'prioritaire'  : {
+                    20 : 1.43,
+                    100 : 2.86,
+                    250 : 5.26,
+                    500 : 7.89,
+                    3000 : 11.44,
+                    0 : 0.5
+        },
+    
+    'ecopli' : {
+        20 : 1.14,
+        100 : 2.28,
+        250 : 3.92,
+        0 : 0.5
+        },
+    'outre-mer' : {
+        500 : 8.35,
+        1000 : 11.2,
+        2000 : 14.1,
+        5000 : 23.65,
+        10000 : 37.5,
+        15000 : 75.85,
+        30000 : 87.4
+        }
+    }
 # Poid max pour chaque type de lettre
 POID_MAX = {"verte" : 3000,
             "prioritaire" : 3000,
@@ -40,13 +49,6 @@ OM1 = ['guyanne','guadeloupe','martinique,la reunion; st pierre et miquelon', 's
 
 
 OM2 = ['nouvelle-caledonie','polynesie francasie', 'wallis-et-futuna']
-
-
-# Liste des types de lettres
-
-
-
-
 
 
 
@@ -137,9 +139,10 @@ def Calcul_prix_sans_complement(type_lettre : str, poid : int)-> float:
        if poid >= 0 and POID_MAX[type_lettre] >= poid :
             break
     if poid == 0 and (type_lettre == 'ecopli' or type_lettre == 'verte' or type_lettre == 'prioritaire'):
-        prix = 0.50 #Car le choix poid = 0 correspond au sticker suivis ( énoncé dans le input du poid ), le prix du sticker est tjrs de 0.5€
-         return prix
+        prix = 0.5 
+        return prix
     #Récuperation du poid correspondant
+    
     for i in DICT_TYPES[type_lettre].keys():
         resultat = i
         if poid< i:
