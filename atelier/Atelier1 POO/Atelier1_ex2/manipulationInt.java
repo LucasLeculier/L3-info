@@ -9,11 +9,7 @@ public class manipulationInt {
 	 int bornSup;
 	 int entier;
 	
-	public manipulationInt(int bornInf,int bornSup) {
-		this.entier=0;
-		this.bornInf=bornInf;
-		this.bornSup=bornSup;
-	}
+	
 	public manipulationInt(int bornInf,int bornSup,int entier) {
 		if (entier>=bornInf && entier<=bornSup) {
 			this.entier=entier;
@@ -23,6 +19,9 @@ public class manipulationInt {
 		}
 		this.bornInf=bornInf;
 		this.bornSup=bornSup;
+	}
+	public manipulationInt(int bornInf,int bornSup) {
+		this(bornInf,bornSup,0);
 	}
 	//GET SET
 	public int getBInf() {
