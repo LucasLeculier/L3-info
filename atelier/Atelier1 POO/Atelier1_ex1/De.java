@@ -5,11 +5,11 @@ import java.util.*;
 //Question 9 : on utilise un arrayList que l'on prend en parametre et nbfaces = len(array)
 
 public class De {
-		int nbFaces;
-		String nom;
-		static Random r = new Random();
-		static int nbDes = 0;
-	        final int defaultValue = 6;
+		protected int nbFaces;
+		protected String nom;
+		protected static Random r = new Random();
+		protected static int nbDes = 0;
+	        protected final int defaultValue = 6;
 		
 
 		public De(String nom, int nbFaces) {
