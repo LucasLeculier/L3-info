@@ -9,34 +9,26 @@ public class DeMemoire extends De {
 	this.nom="Dé"+nbDes;
 	nbDes++;
 	}
-	public DeMemoire(String nom) {
-		this.nbFaces=6;
+	
+      public DeMemoire(String nom,int nbFaces) {
+		if (nbFaces >= 3 && nbFaces <= 120) {
+			this.nbFaces = nbFaces;
+		}
+		else {
+			//System.out.println("Nombre de faces impossible, nombre de faces établi a 6");
+			this.nbFaces = 6;
+		}
 		this.nom=nom;
 		nbDes++;
+}
+	public DeMemoire(String nom) {
+		this(nom,6);
 		
 	}
 	public DeMemoire(int nbFaces) {
-		if (nbFaces >= 3 && nbFaces <= 120) {
-			this.nbFaces = nbFaces;
-		}
-		else {
-			//System.out.println("Nombre de faces impossible, nombre de faces établi a 6");
-			this.nbFaces = 6;
-		}
-		this.nom="De"+nbDes;
-		nbDes++;
+		this("de"+nbDes)
 }
-	public DeMemoire(String nom,int nbFaces) {
-		if (nbFaces >= 3 && nbFaces <= 120) {
-			this.nbFaces = nbFaces;
-		}
-		else {
-			//System.out.println("Nombre de faces impossible, nombre de faces établi a 6");
-			this.nbFaces = 6;
-		}
-		this.nom=nom;
-		nbDes++;
-}
+	
 	public int lancer() {
 		int newValeur;
 		while(true) {
