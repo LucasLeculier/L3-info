@@ -15,7 +15,7 @@ public class DePipe extends De {
 		}
 	}
 	public DePipe(int vMin) {
-		this("De"+nbDes,6,vMin);
+		this("De"+nbDes,defaultValue,vMin);
 		
 	}
 	public DePipe(int nbFaces,int vMin) {
@@ -23,7 +23,7 @@ public class DePipe extends De {
 		
 	}
 	public DePipe(String nom,int vMin) {
-		this(nom,6,vMin);
+		this(nom,defaultValue,vMin);
 		
 	}
 	// GET SET

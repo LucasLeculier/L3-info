@@ -5,10 +5,11 @@ import java.util.*;
 //Question 9 : on utilise un arrayList que l'on prend en parametre et nbfaces = len(array)
 
 public class De {
-		int nbFaces;
-		String nom;
-		static Random r = new Random();
-		static int nbDes = 0;
+		protected int nbFaces;
+		protected String nom;
+		protected static Random r = new Random();
+		protected static int nbDes = 0;
+	        protected final int defaultValue = 6;
 		
 
 		public De(String nom, int nbFaces) {
@@ -19,12 +20,12 @@ public class De {
 			}
 			else {
 				//System.out.println("Nombre de faces impossible, nombre de faces établi a 6");
-				this.nbFaces = 6;
+				this.nbFaces = defaultValue;
 			}
 		}	
 		
 	public De() {
-		this("De"+nbDes,6);
+		this("De"+nbDes,defaultValue);
 		
 	}
 	public De(int nbFaces) {
@@ -33,7 +34,7 @@ public class De {
 	
 	
 	public De(String nom) {
-		this(nom,6);
+		this(nom,defaultValue);
 	}
 	
 	//GET SET
@@ -72,7 +73,14 @@ public class De {
 	public String toString() {
 		return "nom : "+this.nom + " nombre de faces : "+nbFaces;
 	}
-	public Boolean equals(De de1) {
-		return this.nom == de1.nom && this.nbFaces == de1.nbFaces;
+	public boolean equal(Object de1) {
+		boolean result = false;
+		if(de1 != null && de1 instanceof Des) {
+			Des de =(Des) de1; 
+			result = (this.name.equals(de.name) && this.nbFaces==de.nbFaces);
+		}
+		return result;
+		
+		
 	}
 }
