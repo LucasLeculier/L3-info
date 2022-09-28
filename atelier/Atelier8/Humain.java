@@ -2,7 +2,7 @@ package Atelier8;
 
 public class Humain extends Personnage {
 
-	private static int nbDeplacements=0;
+	private int nbDeplacements=0;
 	private int niveau=1;
 	
 	public Humain(String nom,int age) {
@@ -27,6 +27,9 @@ public class Humain extends Personnage {
 	}
 	public String toString() {
 		return "Humain "+this.nom;
+	}
+	public String typePerso() {
+		return "H";
 	}
 }
 

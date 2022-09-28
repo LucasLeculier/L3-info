@@ -3,7 +3,7 @@ package Atelier8;
 public class Case {
 
 	private int gain;
-	private Personnage perso=null;
+	protected Personnage perso=null;
 	private Obstacle obs=null;
 	
 	public Case(Obstacle obs,int gain) {
@@ -53,4 +53,6 @@ public class Case {
             return this.perso.toString()+"pénalité = -"+this.getPenalite();
         }
     }
+	
+	
 }

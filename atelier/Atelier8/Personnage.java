@@ -28,4 +28,5 @@ public abstract class Personnage {
 	}
 	public abstract int positionSouhaitee();//Methode abstraite qui renvoie un int
 	
+	public abstract String typePerso();//Méthode abstraite pour récuperer le type du perso pour le .txt
 }

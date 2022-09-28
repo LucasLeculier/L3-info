@@ -14,10 +14,17 @@ public class Tauren extends Personnage {
 	@Override
 	public int positionSouhaitee() {
 		Random r = new Random();
-		return r.nextInt(1, taille+1);
+		return this.position +r.nextInt(1, taille+1);
 	}
 	public String toString() {
 		return "Tauren "+this.nom;
 	}
+
+	@Override
+	public String typePerso() {
+		// TODO Auto-generated method stub
+		return "T";
+	}
+	
 	
 }

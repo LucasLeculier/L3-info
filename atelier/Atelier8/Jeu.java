@@ -1,5 +1,10 @@
 package Atelier8;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -7,7 +12,7 @@ public class Jeu {
 
 	private String titre;
 	final int NB_JOUEUR_MAX = 6;
-	final int NB_CASES = 50;
+	final int NB_CASES = 99;
 	private ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur>();
 	private Case[] cases = new Case[NB_CASES];
 	private int nbEtapes;
@@ -37,7 +42,7 @@ public class Jeu {
 	}
 	public void initialiserCases() { //initialisaiton des cases
 		Random r = new Random();
-		for (int i =0; i<50;i++) {
+		for (int i =0; i<NB_CASES;i++) {
 			int gain = r.nextInt(1, NB_CASES+1);
 			
 			
@@ -94,7 +99,24 @@ public class Jeu {
 		return gagnant;
 	}
 	
-	public void lancerJeu() { //Lancement du jeu
+	public void generationFichiers(int index) throws IOException {
+			FileOutputStream fos = new FileOutputStream("C:\\Users\\lluca\\Desktop\\txt_java\\tour"+index+".txt");
+//			File f = new File("C:\\Users\\lluca\\Desktop\\txt_java\\example"+i+".txt");
+//			f.createNewFile();
+			for (int j=0;j<NB_CASES;j++) {
+				String A=("case numéro "+j+" "+cases[j]);
+				String[] B = A.split(" ");
+				String type = B[3]+" ";
+				fos.write(type.getBytes());
+//				if (j==9 || j==19 || j==29 || j==39) {
+//					fos.write("\n".getBytes());
+//				}
+		}
+			fos.flush();
+			fos.close();
+	}
+	
+	public void lancerJeu() throws IOException { //Lancement du jeu
 		
 		System.out.println("JEU NUMERO "+compteurJeu);
 		initialiserCases();
@@ -106,40 +128,57 @@ public class Jeu {
 			while(true) {
 				if (cases[num_case].estLibre()) {
 					cases[num_case].placerPersonnage(personnage);
+					personnage.deplacer(num_case, 0);
 					break;
 				}
 				num_case ++;
 			}
 		}
+		generationFichiers(0);
 		//Lancement du jeu
 		afficherParticipants();
 		afficherCases();
+		int numeroFichier = 1;
 		while(compteurEtapes<nbEtapes) {
+			System.out.println("---------------DEBUT DE LETAPE------------------");
 			for (int i=0;i<listePersos.size();i++) {
 				Personnage personnage = listePersos.get(i); //Récupere le personnage a la position i
-				int numCaseSouhait = personnage.positionSouhaitee();
+			//	System.out.println("personnage qui va bouger"+personnage.nom + personnage.position);
 				
-				if (numCaseSouhait>NB_CASES) {
-					numCaseSouhait=NB_CASES;
+				int numCaseSouhait = personnage.positionSouhaitee();
+				System.out.println("personnage ::::: "+personnage.nom +" souhait ::: "+numCaseSouhait);
+			//	System.out.println("position souhaiter de "+personnage.nom+" :"+numCaseSouhait);
+				
+				if (numCaseSouhait>=NB_CASES) {
+					numCaseSouhait=NB_CASES-1;
 				}
 				
 				if(cases[numCaseSouhait].estLibre()) {
+					cases[personnage.position].enleverPerosnnage();
 					personnage.deplacer(numCaseSouhait, cases[numCaseSouhait].getGain());
+					cases[numCaseSouhait].placerPersonnage(personnage);
+					
+
+
+					
 				}
 				else {
 					personnage.penaliser(cases[numCaseSouhait].getGain());
+					personnage.deplacer(personnage.position, 0);
 				}
-		}
+				//afficherCases();
+			}
+			generationFichiers(numeroFichier);
+			numeroFichier++;
 			compteurEtapes++;
-			
 		}
 		afficherResultats();
 		
 		//Réinitialisation de tous a 0
 		for (int i=0;i<listeJoueurs.size();i++) {
 			listeJoueurs.get(i).modifierPoints(0);
-			for (int j=0;j<listeJoueurs.get(i).listePersos.size();j++) {
-				listeJoueurs.get(j).listePersos.get(i).position=0;
+		for (int j=0;j<tousLesPerso().size();j++) {
+				tousLesPerso().get(i).position=0;
 			}
 		}
 		this.compteurEtapes=0;
